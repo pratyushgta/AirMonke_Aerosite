@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="register.css" />
+  <title>Sign in & Sign up Form</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="forms-container">
+      <div class="signin-signup">
+
+        <form action="login.php" method="post" class="sign-in-form" name="loginForm"
+          onsubmit="return validateLoginForm()">
+          <h2 class="title">Sign in</h2>
+
+          <div class="input-field" id="email">
+            <i class="fas fa-envelope" id="i"></i>
+            <input type="email" placeholder="Email" name="email" value="" maxlength="30" required="" />
+            <i class="text-danger fas"> </i>
+          </div>
+
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="password" placeholder="Password" name="password" value="" maxlength="8" required="" />
+            <i class="text-danger fas"> </i>
+          </div>
+          <div class="input-field">
+            <i class="fas fa-lock"></i>
+            <input type="text" placeholder="username" name="username" value="" maxlength="30" required="" />
+            <i class="text-danger fas"> </i>
+          </div>
+
+          <input type="submit" name="login" value="Login" class="btn solid" />
+        </form>
+  <script src="register.js">
+  </script>
+</body>
+
+</html>
