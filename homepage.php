@@ -73,9 +73,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form class="search-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <ul class="nav-menu2">
                 <li><a href="#">Search Flights</a></li>
-                <li><a href="#" disabled>Flight Status</a></li>
-                <li><a href="#" disabled>My Bookings</a></li>
-                <li><a href="#" disabled>Manage</a></li>
+                <li><a href="manage.php">Manage</a></li>
+                <li><a href="status.php">Flight Status</a></li>
             </ul>
 
             <h3>Search Flights</h3>

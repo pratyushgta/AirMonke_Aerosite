@@ -31,7 +31,24 @@ if (isset($_POST['logout'])) {
             echo "<table>";
             echo "<tr><th>Flight No</th><th>Aircraft Reg</th><th>Origin</th><th>Destination</th><th>Departure Time</th><th>Arrival Time</th></tr>";
             foreach ($results as $result) {
-                echo "<tr><td>" . $result["flight_no"] . "</td><td>" . $result["ac_reg"] . "</td><td>" . $result["org"] . "</td><td>" . $result["dest"] . "</td><td>" . $result["dept_t"] . "</td><td>" . $result["arr_t"] . "</td></tr>";
+                echo "<tr>
+                <td>" . $result["flight_no"] .
+                    "</td>
+                <td>" . $result["ac_reg"] .
+                    "</td>
+                <td>" . $result["org"] .
+                    "</td>
+                <td>" . $result["dest"] .
+                    "</td>
+                <td>" . $result["dept_t"] .
+                    "</td>
+                <td>" . $result["arr_t"] .
+                    "</td>
+                <td>
+                
+                <form method='post' action='book-flight.php'>
+                <input type='hidden' name='flight_no' value='" . $result["flight_no"] . "'/>
+                <input type='submit' name='book_now' value='Book Now'></form></td></tr>";
             }
             echo "</table>";
         } else {
