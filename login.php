@@ -58,7 +58,7 @@ mysqli_close($conn);
 
 <body ng-app="">
    <h1>LOGIN</h1>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="loginForm" ng-app>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="loginForm">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" required ng-model="username">
     <br>
