@@ -1,6 +1,17 @@
 <?php
 session_start();
 
+if (isset($_SESSION['username']) == "") {
+    header("Location: homepage.php");
+}
+
+if (isset($_POST['logout'])) {
+    session_unset();
+    session_destroy();
+    header("Location: homepage.php");
+    exit();
+}
+
 require_once "database.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
