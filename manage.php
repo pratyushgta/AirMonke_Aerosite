@@ -52,7 +52,7 @@ mysqli_close($conn);
 
 <body ng-app="">
    <h1>Manage</h1>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="loginForm">
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="manageForm">
     <label for="pnr">PNR:</label>
     <input type="text" id="pnr" name="pnr" required ng-model="pnr">
     <br>
