@@ -48,6 +48,7 @@ if (isset($_POST['logout'])) {
                 
                 <form method='post' action='book-flight.php'>
                 <input type='hidden' name='flight_no' value='" . $result["flight_no"] . "'/>
+                <input type='hidden' name='dot' value='" . $_SESSION["dot"] . "'/>
                 <input type='submit' name='book_now' value='Book Now'></form></td></tr>";
             }
             echo "</table>";

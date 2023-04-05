@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dept_t = null;
     $arr_t = null;
     $dot = $_POST["dot"];
-
+    $_SESSION['dot'] = $dot;
 
     if ($org && $dest && $dot) {
         $query = "SELECT * FROM flight WHERE org = '$org' AND dest = '$dest'";
