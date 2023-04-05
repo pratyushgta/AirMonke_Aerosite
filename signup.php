@@ -47,11 +47,12 @@ mysqli_close($conn);
     <meta name="author" content="Pratyush">
     <meta name="author" content="Aadil">
     <meta name="author" content="Vidit">
-    <title>AirMonke-Login</title>
+    <title>AirMonke-Register</title>
     <link rel="airline-logo.jpg" type="image/x-icon" href="favicon.ico" />
+    <script src="angular.min.js"></script>
 </head>
 
-<body>
+<body ng-app="registerApp" ng-controller="registerController">
     <h1>Sign Up!</h1>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="registerForm"
       ng-app="registerApp" ng-controller="registerController" novalidate>

@@ -6,7 +6,7 @@
     <meta name="author" content="Pratyush">
     <meta name="author" content="Aadil">
     <meta name="author" content="Vidit">
-    <title>AirMonke-Login</title>
+    <title>Welcome to AirMonke</title>
     <link rel="airline-logo.jpg" type="image/x-icon" href="favicon.ico" />
 </head>
 
