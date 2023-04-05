@@ -14,38 +14,32 @@ if (isset($_POST['logout'])) {
 
 require_once "database.php";
 
+$flight_no = "";
+$org = "";
+$flight_data = "";
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $flight_no = $_POST["flight_no"];
     $org = $_POST["org"];
 
-    if ($email && $pnr) {
-        $query = "SELECT t.pnr, t.pax_id, p.name, p.gender, p.dob, p.mob_no, t.flight_no, t.class, t.dot, t.tot_fare
-                  FROM ticket t
-                  INNER JOIN pax p ON t.pax_id = p.pax_id
-                  WHERE t.pnr = '$pnr'
-                  AND p.email = '$email'";
+    if ($flight_no && $org) {
+        $query = "SELECT f.flight_no, f.ac_reg, f.org, f.dest, f.dept_t, f.arr_t, fl.type_code, fl.name, fl.seat_config 
+FROM flight f 
+JOIN fleet fl ON f.ac_reg = fl.ac_reg 
+WHERE f.flight_no = '$flight_no' AND f.org = '$org';";
 
         $result = mysqli_query($conn, $query);
 
         if (mysqli_num_rows($result) > 0) {
-            // Display the ticket details in a new webapge
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION["ticket_details"] = $row;
-            header("Location: ticket_details.php");
-            exit;
+            $flight_data = mysqli_fetch_assoc($result);
         } else {
-            // PNR does not exist in the database
-            echo "PNR does not exist in the database or email id does not match with given PNR.";
+            $flight_data = "No flight data found for given flight no and org";
         }
-    } else {
-        // PNR or email not provided
-        echo "Please provide both PNR and email.";
     }
 }
 
 mysqli_close($conn);
 ?>
-
 
 
 <!DOCTYPE html>
@@ -72,6 +66,27 @@ mysqli_close($conn);
     <br>
     <input type="submit" value="Submit" ng-disabled="!statusForm.$valid || !flight_no || !org">
 </form>
+<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <input type="submit" name="logout" value="Logout">
+    </form>
+
+    <?php
+    if ($flight_data) {
+        if (is_array($flight_data)) {
+            echo "<h2>Flight Details for {$flight_data['flight_no']}</h2>";
+            echo "<p>Ac Reg: {$flight_data['ac_reg']}</p>";
+            echo "<p>Org: {$flight_data['org']}</p>";
+            echo "<p>Dest: {$flight_data['dest']}</p>";
+            echo "<p>Dept Time: {$flight_data['dept_t']}</p>";
+            echo "<p>Arr Time: {$flight_data['arr_t']}</p>";
+            echo "<p>Type Code: {$flight_data['type_code']}</p>";
+            echo "<p>Name: {$flight_data['name']}</p>";
+            echo "<p>Seat Config: {$flight_data['seat_config']}</p>";
+        } else {
+            echo "<p>$flight_data</p>";
+        }
+    }
+    ?>
 
 <script>
     function validateLoginForm() {
