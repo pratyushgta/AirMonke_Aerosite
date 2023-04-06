@@ -59,10 +59,93 @@ mysqli_close($conn);
     <title>AirMonke-Manage</title>
     <link rel="airline-logo.jpg" type="image/x-icon" href="favicon.ico" />
     <script src="angular.min.js"></script>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+        }
+        
+        form {
+            margin: auto;
+            width: 50%;
+            border: 3px solid #f2f2f2;
+            padding: 10px;
+        }
+        
+        input[type=text], input[type=email], input[type=submit] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        input[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        input[type=submit]:hover {
+            background-color: #45a049;
+        }
+        
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        span {
+            color: red;
+            font-weight: bold;
+        }
+        .a1{
+        height: 200px;
+        width: 300px;
+        background-color: bisque;
+        margin-top: 150px;
+        margin-left: 600px;
+        margin-right: 500px;
+        border-style: double;
+        border-color: blue;
+        text-align: center;
+        padding-top: 60px;
+        opacity: 80%;
+    }
+    .head1{
+        background-color: orange;
+        border-color: blue;
+        border-style: double;
+        
+    }
+    .ht1{
+        margin-left: 700px;
+        height: 75px;
+        
+    }
+    </style>
 </head>
 
 <body ng-app="">
-   <h1>Manage</h1>
+   <header class="head1">
+        <table class="ht1">
+            <tr>
+                <td style="text-align: left;width: 25%;"><button class="back1">BACK</button></td>
+                <td style="text-align: center; width: 50%;"><img src="AIRMONKE1-removebg-preview.png" alt="" style="height: 100px;"></td>
+                <td style="text-align: right;width: 25%;"><button class="myac1"><a href="dashboard.php">MY ACCOUNT</a></button></td>
+            </tr>
+        
+        </table>
+    </header>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="manageForm">
     <label for="pnr">PNR:</label>
     <input type="text" id="pnr" name="pnr" required ng-model="pnr">
@@ -70,7 +153,7 @@ mysqli_close($conn);
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" required ng-model="email">
     <br>
-    <input type="submit" value="Submit" ng-disabled="!loginForm.$valid || !pnr || !email">
+    <input type="submit" value="Submit" ng-disabled="!manageForm.$valid || !pnr || !email">
 </form>
 
 <script>
