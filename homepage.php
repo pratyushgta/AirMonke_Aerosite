@@ -65,10 +65,64 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="airline-logo.jpg" type="image/x-icon" href="favicon.ico" />
     <script src="angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="homepage.css">
+    <style>
+    .head1{
+        background-color: orange;
+        border-color: blue;
+        border-style: double;
+        
+    }
+    .ht1{
+        width:100%;
+
+        
+    }
+    .myac1 {
+
+    background-color: orange;
+
+}
+
+.myac1:hover {
+
+    background-color: red;
+
+}
+
+.back1 {
+
+    background-color: orange;
+
+}
+
+.back1:hover {
+
+    background-color: red;
+
+}
+    
+    </style>
+    
 </head>
 
 <body ng-app="">
-    <h1>Book Now!</h1>
+    <header class="head1">
+        <table class="ht1">
+            <tr>
+                <td style="text-align: left;width: 25%;"><button class="back1"><a href="welcome.php">BACK</a></button></td>
+                <td style="text-align: center; width: 50%;"><img src="AIRMONKE1-removebg-preview.png" alt="" style="height: 100px;"></td>
+                <td style="text-align: right;width: 25%;"><button class="myac1"><a href="dashboard.php">MY ACCOUNT</a></button></td>
+            </tr>
+        
+        </table>
+    </header>
+        <section class="slideshow">
+        <img src="5502286.webp" alt="Slide 1" />
+        <img src="2123210.webp" alt="Slide 1" />
+        <div class="slide-text"></div>
+        <button class="prev">&#8249;</button>
+        <button class="next">&#8250;</button>
+    </section>
     <div id="home">
         <form class="search-form" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <ul class="nav-menu2">
@@ -125,6 +179,51 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             return true;
         }
 
+
+       const slideshow = document.querySelector('.slideshow');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const slides = slideshow.querySelectorAll('img');
+        let currentSlide = 0;
+
+        // Hide all slides except the first one
+        for (let i = 1; i < slides.length; i++) {
+            slides[i].style.display = 'none';
+        }
+
+        // Add click event listeners to the buttons
+        prevButton.addEventListener('click', showPreviousSlide);
+        nextButton.addEventListener('click', showNextSlide);
+
+        function showPreviousSlide() {
+            // Hide the current slide
+            slides[currentSlide].style.display = 'none';
+            // Decrement the current slide index
+            currentSlide--;
+
+            // Wrap around to the last slide if necessary
+            if (currentSlide < 0) {
+                currentSlide = slides.length - 1;
+            }
+
+            // Show the new current slide
+            slides[currentSlide].style.display = 'block';
+        }
+
+        function showNextSlide() {
+            // Hide the current slide
+            slides[currentSlide].style.display = 'none';
+            // Increment the current slide index
+            currentSlide++;
+
+            // Wrap around to the first slide if necessary
+            if (currentSlide >= slides.length) {
+                currentSlide = 0;
+            }
+
+            // Show the new current slide
+            slides[currentSlide].style.display = 'block';
+        }
 
         const flightType = document.querySelector('#flight-type');
         const returnDate = document.querySelector('#return-date');

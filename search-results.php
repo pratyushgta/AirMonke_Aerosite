@@ -16,13 +16,61 @@ if (isset($_POST['logout'])) {
     exit();
 }
 ?>
-
+<style>
+            body{
+                background-image: url("19053-wing-plane-view-from-above-city-flight-ocean-4k.jpg");
+            }
+            .head1{
+                background-color: orange;
+                border-color: blue;
+                border-style: double;
+            }
+            .ht1{
+                width:100%;
+            }
+            .myac1 {
+                background-color: orange;
+            }
+            .myac1:hover {
+                background-color: red;
+            }
+            .back1 {
+                background-color: orange;
+            }
+            .back1:hover {
+                background-color: red;
+            }
+            .d1{
+                height:300px;
+                width:300px;
+                margin-top:120px;
+                margin-left:600px;
+                margin-right:500px;
+                background-color:bisque;
+                border-color:blue;
+                border-style:double;
+            }
+            .f1{
+                height:15px;
+                width:100%;
+            }
+</style>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Search Results</title>
 </head>
 <body>
+    <header class="head1">
+        <table class="ht1">
+            <tr>
+                <td style="text-align: left;width: 25%;"><button class="back1"><a href="homepage.php">BACK</a></button></td>
+                <td style="text-align: center; width: 50%;"><img src="AIRMONKE1-removebg-preview.png" alt="" style="height: 100px;"></td>
+                <td style="text-align: right;width: 25%;"><button class="myac1"><a href="dashboard.php">MY ACCOUNT</a></button></td>
+            </tr>
+        
+        </table>
+    </header>
     <h1>Search Results</h1>
     <?php
     if (isset($_SESSION["search-results"])) {

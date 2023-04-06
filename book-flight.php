@@ -1,67 +1,3 @@
-<?php
-session_start();
-// Clear session data if the "back" button was pressed
-if (isset($_POST['back'])) {
-    unset($_SESSION['search-results']);
-}
-
-if (empty($_SESSION['username'])) {
-    header("Location: login.php");
-    exit();
-}
-
-if (isset($_POST['logout'])) {
-    session_unset();
-    session_destroy();
-    header("Location: login.php");
-    exit();
-}
-
-require_once "database.php";
-
-function generateRandomString($length = 10)
-{
-    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $flight_no = $_POST['flight_no'];
-    $dot = $_POST['dot'];
-    $pnr = generateRandomString(5);
-    $pax_id = $_POST["pax_id"];
-    $class = $_POST["class"];
-    $tot_fare = 1540;
-    $name = $_POST["name"];
-    $gender = $_POST["gender"];
-    $dob = $_POST["dob"];
-    $mob_no = $_POST["mob_no"];
-    $email = $_POST["email"];
-
-    $query1 = "INSERT INTO pax VALUES('$pax_id','$name','$gender','$dob','$mob_no','$email')";
-    $query2 = "INSERT INTO ticket VALUES('$pnr','$pax_id','$flight_no','$class','$dot','$tot_fare')";
-
-    $result1 = mysqli_query($conn, $query1);
-    $result2 = mysqli_query($conn, $query2);
-
-    echo "PNR: " . $pnr . "<br>";
-    echo "Name: " . $name . "<br>";
-    echo "Gender: " . $gender . "<br>";
-    echo "DOB: " . $dob . "<br>";
-    echo "Mobile No.: " . $mob_no . "<br>";
-    echo "Email: " . $email . "<br>";
-    echo "Flight No.: " . $flight_no . "<br>";
-    echo "Class: " . $class . "<br>";
-    echo "DOT: " . $dot . "<br>";
-    echo "Total Fare: " . $tot_fare . "<br>";
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,10 +11,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="angular.min.js"></script>
     <link rel="stylesheet" type="text/css" href="homepage.css">
 </head>
-
+<style>
+    body{
+        background-image: url("5387-airplane-porthole-window-overview-city-4k.jpg");
+    }
+    .a1{
+        height: 300px;
+        width: 700px;
+        background-color: bisque;
+        border-color: blue;
+        border-style: double;
+        margin-left: 200px;
+        margin-right: 500px;
+        margin-top: 200px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-style: italic;
+        text-align: center;
+    }
+    .f1{
+        height: 50px;
+        width: 100%;
+        margin-bottom: 0px;
+        margin-top: 300px;
+        background-color: orange;
+    }
+    .head1{
+        background-color: orange;
+        border-color: blue;
+        border-style: double;
+        
+    }
+    .ht1{
+        margin-left: 700px;
+        height: 75px;
+        
+    }
+</style>
 <body ng-app="">
-    <h1>Your booking:</h1>
-    <form method="post" action="<?php echo htmlspecialchars($_SERVER[" PHP_SELF"]); ?>" name="bookingForm">
+    <header class="head1">
+        <table class="ht1">
+            <tr>
+                <td><img src="AIRMONKE1-removebg-preview.png" alt="" style="height: 100px;"></td>
+            </tr>
+        </table>
+    </header>
+    <form class="a1" method="post" name="bookingForm">
+        <h1>Your booking:</h1>
         <label for="name">Your name:</label>
         <input type="text" id="name" name="name" required ng-model="name">
         <br>
@@ -110,6 +88,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
 
     </div>
+    <footer>
+        <table class="f1">
+            <tr>
+                <td>AIRMONKE</td>
+            </tr>
+        </table>
+    </footer>
     <script>
         function validateLoginForm() {
             //Redundant. Replaced with AngularJS.

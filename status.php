@@ -56,6 +56,16 @@ mysqli_close($conn);
 </head>
 
 <body ng-app="">
+    <header class="head1">
+        <table class="ht1">
+            <tr>
+                <td style="text-align: left;width: 25%;"><button class="back1">BACK</button></td>
+                <td style="text-align: center; width: 50%;"><img src="AIRMONKE1-removebg-preview.png" alt="" style="height: 100px;"></td>
+                <td style="text-align: right;width: 25%;"><button class="myac1"><a href="dashboard.php">MY ACCOUNT</a></button></td>
+            </tr>
+        
+        </table>
+    </header>
    <h1>Manage</h1>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="statusForm">
     <label for="flight_no">Flight No.:</label>

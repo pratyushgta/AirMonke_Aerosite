@@ -51,11 +51,46 @@ mysqli_close($conn);
     <link rel="airline-logo.jpg" type="image/x-icon" href="favicon.ico" />
     <script src="angular.min.js"></script>
 </head>
-
+<style>
+    body{
+        background-image: url("3108144-aeroplane_blue-skies_blue-sky_fly_navy_plane_sky.jpg");
+        background-position: center;
+    }
+    .signup1{
+        height:700px ;
+        width: 500px; 
+        margin-left: 60px;
+        margin-right: 500px;
+        margin-top: 100px;
+        background-color: bisque;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        font-style: italic;
+        border-color: blue;
+        border-style: double;
+        opacity: 80%;
+    }
+    .head1{
+        background-color: orange;
+        border-color: blue;
+        border-style: double;
+        
+    }
+    .ht1{
+        margin-left: 700px;
+        height: 75px;
+    }
+</style>
 <body ng-app="registerApp" ng-controller="registerController">
+    <header class="head1">
+        <table class="ht1">
+            <tr>
+                <td><img src="AIRMONKE1-removebg-preview.png" alt="" style="height: 100px;"></td>
+            </tr>
+        </table>
+    </header>
+<form class="signup1" method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="registerForm" 
+    ng-app="registerApp" ng-controller="registerController" novalidate>
     <h1>Sign Up!</h1>
-<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" name="registerForm"
-      ng-app="registerApp" ng-controller="registerController" novalidate>
     <label for="First Name">First Name:</label>
     <input type="text" id="f_name" name="f_name" ng-model="formData.f_name" ng-pattern="/^[a-zA-Z]+$/" required>
     <div ng-show="registerForm.f_name.$touched && registerForm.f_name.$error.required">
